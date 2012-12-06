@@ -170,7 +170,7 @@ abbr[title] {
  */
 b,
 strong {
-  font-weight: 700;
+  font-weight: bold;
 }
 
 blockquote {
@@ -337,7 +337,7 @@ form {
 }
 
 /*
- * Define consistent border, margin, and padding
+ * Define consistent margin, and padding
  */
 fieldset {
   margin: 0 2px;
