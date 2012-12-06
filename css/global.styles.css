@@ -24,7 +24,7 @@
 /* =============================================================================
  *   Base
  * ========================================================================== */
-/* 
+/*
  * To preserve theme settings never apply font properties to the HTML element.
  * This is critically important if you are using the Responsive JavaScript
  * feature as this relies on being able to set a pseudo font family on the HTML
@@ -43,6 +43,11 @@ body {
 /* =============================================================================
  *   HTML Elements
  * ========================================================================== */
+h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #000;
+  text-decoration: underline;
+}
+
 pre,
 code,
 tt,
@@ -59,12 +64,22 @@ var {
  * Page wrapper, includes the .container class which sets the overall page or section width
  * Main wrapper in page.tpl.php, the .container class sets the width of the page, do not add width to it!
  */
+#page * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /*
  * Wraps all header elements - branding and .region-header
  */
 /*
  * Wraps the sidebars the content column
  */
+#columns {
+  margin-bottom: 25px;
+}
+
 /*
  * Main content column wrapper
  */
@@ -96,11 +111,6 @@ var {
 /*
  * Wraps the header
  */
-#header-wrapper {
-  /* Debug styles, is this working */
-  background: rgba(255, 192, 203, 0.5);
-}
-
 /*
  * Wraps the nav elements
  */
@@ -123,8 +133,66 @@ var {
  * Footer wrapper
  */
 #footer-wrapper {
-  /* Debug styles, is this working? */
-  background: rgba(255, 192, 203, 0.5);
+  background-color: #000000;
+  border-top: 1px solid #4A4E50;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding-top: 20px;
+  text-align: center;
+}
+
+#footer-panels-wrapper {
+  background-color: #3B3B3C;
+  margin-bottom: 0;
+  color: #fff;
+  padding: 25px 0 10px;
+}
+#footer-panels-wrapper div.block-content.content {
+  margin-left: 120px;
+}
+#footer-panels-wrapper div.block-content.content a {
+  color: #fff;
+}
+#footer-panels-wrapper div.block-content.content a:hover {
+  text-decoration: underline;
+}
+#footer-panels-wrapper div.block-content.content a img {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+#footer-panels-wrapper div.block-content.content p {
+  padding-left: .5em;
+}
+#footer-panels-wrapper div.block-content.content ul li {
+  background-color: #464E55;
+  text-align: center;
+  margin: 5px;
+  height: 40px;
+  width: 40px;
+  display: inline;
+  float: left;
+  font-weight: bold;
+  position: relative;
+}
+#footer-panels-wrapper div.block-content.content ul li.active {
+  background-color: #FFC344;
+}
+#footer-panels-wrapper div.block-content.content ul li.active a {
+  color: #000;
+}
+#footer-panels-wrapper div.block-content.content ul li a {
+  display: block;
+  padding-top: 12px;
+}
+#footer-panels-wrapper div.block-content.content ul li a:hover {
+  text-decoration: none;
+}
+#footer-panels-wrapper h2.block-title {
+  color: #fff;
+  float: left;
+  font-weight: bold;
+  font-size: 1.6em;
+  text-transform: uppercase;
 }
 
 /* =============================================================================
@@ -133,11 +201,17 @@ var {
 /*
  * Wraps all the branding elements, logo, name and slogan
  */
+#branding {
+  float: left;
+  padding: 0;
+}
+
 /*
  * Logo
  */
 #logo {
-  padding: 10px 0;
+  float: left;
+  padding: 10px 15px 10px 0;
 }
 #logo img {
   vertical-align: bottom;
@@ -151,6 +225,12 @@ var {
  */
 #site-name {
   margin: 0;
+}
+#site-name a {
+  font-family: steelfish;
+  color: #414042;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 #site-name a:link, #site-name a:visited {
   text-decoration: none;
@@ -241,6 +321,10 @@ ul.links li {
 /*
  * Header region, embedded in the #header
  */
+.region-header {
+  float: right;
+}
+
 /*
  * Generally used to output Drupals help block, if the help module is enabled
  */
@@ -259,8 +343,16 @@ ul.links li {
 /*
  * First sidebar
  */
+.region-sidebar-first {
+  border-top: 6px solid #FFC344;
+  border-right: 1px solid #FFC344;
+  border-left: 1px solid #FFC344;
+  border-bottom: 1px solid #FFC344;
+  background-color: #FFF6DC;
+}
+
 /*
- * Second sidebar
+ * Second sidebard
  */
 /*
  * Tertiary content
@@ -272,10 +364,11 @@ ul.links li {
  *   Links
  * ========================================================================== */
 a {
+  color: #086782;
   text-decoration: none;
 }
 a:hover, a:focus {
-  text-decoration: underline;
+  color: #8B9084;
 }
 
 /* =============================================================================
@@ -385,13 +478,44 @@ ul.sf-menu a:focus, ul.sf-menu a:hover, ul.sf-menu a:active {
  *   Menus, usually blocks
  * ========================================================================== */
 ul.menu {
-  padding-left: 15px;
+  list-style-position: inside;
+}
+.region-header ul.menu {
+  text-transform: uppercase;
 }
 ul.menu ul {
-  padding-left: 15px;
+  margin-left: 15px;
+  padding-left: 25px;
+}
+ul.menu ul ul {
+  margin-left: 15px;
+}
+ul.menu ul ul ul {
+  margin-left: 15px;
 }
 ul.menu li {
-  margin: 0;
+  margin: 2px 0;
+}
+.region-header ul.menu li {
+  float: left;
+  margin: 0 2px !important;
+}
+.region-header ul.menu li.collapsed, .region-header ul.menu li.expanded, .region-header ul.menu li.leaf {
+  list-style-image: none;
+  list-style-position: outside;
+  padding-right: 10px;
+}
+.region-header ul.menu li a {
+  border-bottom: 3px double #E1E1E1;
+  display: block;
+  height: 2em;
+  line-height: 2em;
+  padding: 0 8px;
+  color: #000;
+  font-size: .9em;
+}
+.region-header ul.menu li a:hover, .region-header ul.menu li a:focus {
+  color: #8B9084;
 }
 
 /* If li.content exists it's a problem, so reset the padding */
@@ -414,9 +538,30 @@ ul.menu li {
 /* =============================================================================
  *   Breadcrumbs
  * ========================================================================== */
+#breadcrumb-wrapper {
+  margin-bottom: 2.5em;
+}
+
+#breadcrumb-wrapper .container {
+  background: #FFC822;
+  /* Old browsers */
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff6d9), color-stop(100%, #ffc61a));
+  background: -webkit-linear-gradient(top, #fff6d9, #ffc61a);
+  background: -moz-linear-gradient(top, #fff6d9, #ffc61a);
+  background: -o-linear-gradient(top, #fff6d9, #ffc61a);
+  background: -ms-linear-gradient(top, #fff6d9, #ffc61a);
+  background: linear-gradient(top, #fff6d9, #ffc61a);
+  border: 1px solid #FFC61A;
+  height: 3em;
+}
+
 #breadcrumb {
-  margin: 10px 0;
+  padding-top: .5em;
+  padding-bottom: .5em;
   /* If the label is set to show in theme settings the label class is added */
+}
+#breadcrumb #breadcrumb {
+  margin-left: 0px;
 }
 #breadcrumb .breadcrumb-label {
   font-size: 1em;
@@ -436,6 +581,11 @@ ul.menu li {
 #breadcrumb li {
   list-style: none;
   display: inline;
+}
+#breadcrumb a {
+  color: #000000;
+  font-weight: bold;
+  font-size: .8em;
 }
 
 /* =============================================================================
@@ -654,7 +804,7 @@ ul.action-links {
  * Underscores in field name are replaced with dashes
  */
 /*
- * Image Alignment Theme Settings - included here so you can easily override 
+ * Image Alignment Theme Settings - included here so you can easily override
  */
 /*
  * Float none setting
@@ -692,6 +842,9 @@ ul.action-links {
 .block {
   margin-bottom: 20px;
 }
+.region-header .block {
+  margin-top: 20px;
+}
 
 /*
  * Inner wrapper for most blocks, good for margin, padding and borders, block_system_main does not have it
@@ -728,6 +881,13 @@ ul.action-links {
 .block-content li {
   margin: 0;
   padding: 0;
+}
+.block-content ul.menu {
+  padding: 0;
+  margin: 4px 0;
+}
+.block-content ul.menu ul {
+  margin-left: 15px;
 }
 
 /*
@@ -784,6 +944,35 @@ ul.action-links {
 /*
  * "Main menu" block
  */
+#block-system-main-menu a {
+  color: #000 !important;
+}
+#block-system-main-menu li {
+  border-bottom: 1px solid #FFC344;
+  padding: 10px;
+  position: relative;
+}
+#block-system-main-menu li:after {
+  content: ' ';
+  background: #FFC344;
+  height: 6px;
+  width: 6px;
+  position: absolute;
+  bottom: -3px;
+  right: 0;
+}
+#block-system-main-menu li li {
+  border-bottom: none;
+  padding: 2px;
+}
+#block-system-main-menu li li:after {
+  display: none;
+}
+#block-system-main-menu .block-inner {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
 /*
  * "Management" block for Drupal management menu
  */
@@ -826,6 +1015,16 @@ ul.action-links {
  * it is. If you create a new content type called "my-custom-type", it will
  * receive a "node-my-custom-type" class.
  */
+.node-iowa-now-article .publication_source {
+  color: #3B3B3C;
+  font-style: italic;
+}
+
+.field-name-field-iowanow-thumbnail-image {
+  float: left;
+  margin: 0.5em 0.5em 0.5em 0;
+}
+
 /* =============================================================================
  *   Comment Styling - Comments, comment wrapper, comment form
  * ========================================================================== */
@@ -1106,4 +1305,209 @@ div.messages ul {
   margin: 0 20px 20px 0;
   min-height: 260px;
   width: auto;
+}
+
+/* =========================
+ * Custom styles
+ * ====================== */
+.distinct-header h2.pane-title, .distinct-header h2.block-title {
+  border-bottom: 1px solid #FFC344;
+  position: relative;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+.distinct-header h2.pane-title a, .distinct-header h2.block-title a {
+  text-decoration: none;
+}
+.distinct-header h2.pane-title:after, .distinct-header h2.block-title:after {
+  background: none repeat scroll 0 0 #FFC344;
+  bottom: -3px;
+  content: " ";
+  height: 6px;
+  position: absolute;
+  right: 0;
+  width: 6px;
+}
+
+.minimal h3 {
+  font-size: 1.2em;
+  font-weight: 100;
+}
+.minimal h3 a {
+  color: #086782;
+  text-decoration: none;
+}
+.minimal h3 a:hover, .minimal h3 a:focus {
+  text-decoration: underline;
+}
+
+.sub {
+  color: #3B3B3C;
+  font-style: italic;
+}
+
+.flexslider {
+  margin-bottom: 0;
+  background: #EBEBEB;
+  /* Old browsers */
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ebebeb), color-stop(100%, #d1d1d1));
+  background: -webkit-linear-gradient(top, #ebebeb, #d1d1d1);
+  background: -moz-linear-gradient(top, #ebebeb, #d1d1d1);
+  background: -o-linear-gradient(top, #ebebeb, #d1d1d1);
+  background: -ms-linear-gradient(top, #ebebeb, #d1d1d1);
+  background: linear-gradient(top, #ebebeb, #d1d1d1);
+}
+.flexslider h2 {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 100;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+.flexslider h2 a {
+  color: #086782;
+  text-decoration: none;
+}
+.flexslider h2 a:hover {
+  color: #3B3B3C;
+}
+.flexslider .views-field-body {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div.flex-pauseplay {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+div.flex-pauseplay .flex-play {
+  cursor: pointer;
+}
+
+.views-calendar, .view-events-calendar {
+  padding: 4px;
+  background: #f7f7f7;
+  border: 1px solid #cccccc;
+}
+.views-calendar .date-nav-wrapper, .view-events-calendar .date-nav-wrapper {
+  margin-top: 0;
+}
+.views-calendar .date-nav-wrapper .date-nav, .view-events-calendar .date-nav-wrapper .date-nav {
+  margin-bottom: 0;
+  padding: 0;
+  margin-bottom: 3px;
+}
+.views-calendar .pager .date-prev,
+.views-calendar .pager .date-next, .view-events-calendar .pager .date-prev, .view-events-calendar .pager .date-next {
+  background: transparent;
+  border: none;
+  top: 5px;
+}
+.views-calendar .pager .date-prev, .view-events-calendar .pager .date-prev {
+  right: auto;
+  left: 0;
+}
+.views-calendar .item-list ul.pager .date-prev a,
+.views-calendar .item-list ul.pager .date-next a, .view-events-calendar .item-list ul.pager .date-prev a, .view-events-calendar .item-list ul.pager .date-next a {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.views-calendar .calendar-calendar div.day, .view-events-calendar .calendar-calendar div.day {
+  width: auto;
+}
+.views-calendar .calendar-calendar tr td.today,
+.views-calendar .calendar-calendar tr.odd td.today,
+.views-calendar .calendar-calendar tr.even td.today, .view-events-calendar .calendar-calendar tr td.today, .view-events-calendar .calendar-calendar tr.odd td.today, .view-events-calendar .calendar-calendar tr.even td.today {
+  background-color: #fff3cd;
+}
+.views-calendar .calendar-calendar .month-view .full tr td.single-day.today,
+.views-calendar .calendar-calendar .month-view .full td.date-box.today, .view-events-calendar .calendar-calendar .month-view .full tr td.single-day.today, .view-events-calendar .calendar-calendar .month-view .full td.date-box.today {
+  border-color: #1f69a9;
+}
+.views-calendar tbody, .view-events-calendar tbody {
+  border: 1px solid #cccccc;
+}
+.views-calendar tr.odd,
+.views-calendar tr.info,
+.views-calendar tr:nth-child(2n+1), .view-events-calendar tr.odd, .view-events-calendar tr.info, .view-events-calendar tr:nth-child(2n+1) {
+  background-color: #f0f0f0;
+}
+.views-calendar .calendar-calendar table.mini td.empty, .view-events-calendar .calendar-calendar table.mini td.empty {
+  border-color: #cccccc;
+}
+.views-calendar .calendar-calendar th.days, .view-events-calendar .calendar-calendar th.days {
+  border: none;
+}
+.views-calendar .calendar-calendar td, .view-events-calendar .calendar-calendar td {
+  border: 1px solid #cccccc;
+  padding: 7px 3px 3px;
+  text-align: center;
+}
+.views-calendar .date-heading, .view-events-calendar .date-heading {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fafafa), color-stop(100%, #dcdcdc));
+  background-image: -webkit-linear-gradient(#fafafa, #dcdcdc);
+  background-image: -moz-linear-gradient(#fafafa, #dcdcdc);
+  background-image: -o-linear-gradient(#fafafa, #dcdcdc);
+  background-image: -ms-linear-gradient(#fafafa, #dcdcdc);
+  background-image: linear-gradient(#fafafa, #dcdcdc);
+  padding: 10px;
+  outline: 1px solid #ddd;
+  border-top: 2px solid #fff;
+  border-bottom: 1px solid #aaa;
+  text-align: left;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: .75em;
+  font-weight: bold;
+  color: #555;
+  text-shadow: white 0px 1px 0;
+  padding: 2px;
+  margin-top: 0 !important;
+  margin-bottom: 4px;
+}
+.views-calendar .item-list ul.pager, .view-events-calendar .item-list ul.pager {
+  margin: 0;
+  padding: 0;
+}
+.views-calendar .item-list ul.pager .date-prev a,
+.views-calendar .item-list ul.pager .date-next a, .view-events-calendar .item-list ul.pager .date-prev a, .view-events-calendar .item-list ul.pager .date-next a {
+  text-indent: -9999px;
+  font-size: 1em;
+  line-height: 0;
+  background-image: url("images/slider-controls.png");
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  display: block;
+  font-size: 0;
+}
+.views-calendar .item-list ul.pager .date-prev a:hover, .views-calendar .item-list ul.pager .date-prev a:focus, .views-calendar .item-list ul.pager .date-prev a:active,
+.views-calendar .item-list ul.pager .date-next a:hover,
+.views-calendar .item-list ul.pager .date-next a:focus,
+.views-calendar .item-list ul.pager .date-next a:active, .view-events-calendar .item-list ul.pager .date-prev a:hover, .view-events-calendar .item-list ul.pager .date-prev a:focus, .view-events-calendar .item-list ul.pager .date-prev a:active, .view-events-calendar .item-list ul.pager .date-next a:hover, .view-events-calendar .item-list ul.pager .date-next a:focus, .view-events-calendar .item-list ul.pager .date-next a:active {
+  background-color: #7ab4e7;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2), 0px, 0px, 5px, inset;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2), 0px, 0px, 5px, inset;
+  box-shadow: rgba(0, 0, 0, 0.2), 0px, 0px, 5px, inset;
+}
+.views-calendar .item-list ul.pager .date-prev a, .view-events-calendar .item-list ul.pager .date-prev a {
+  background-position: 0 0;
+}
+.views-calendar .item-list ul.pager .date-next a, .view-events-calendar .item-list ul.pager .date-next a {
+  background-position: 0 -20px;
+}
+
+.view p.top-read-more {
+  margin: 0;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  display: block;
+  width: 4em;
 }

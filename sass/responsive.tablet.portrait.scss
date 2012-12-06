@@ -14,5 +14,21 @@
 
 /* Increase the body font size on small devices */
 html {
-  font-size: 81.3%; 
+  font-size: 81.3%;
+}
+
+ #name-and-slogan {
+  float: left;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+// Featured content views
+.flexslider .slides img {
+    width: 400px;
+    float: left;
+}
+
+.flexslider ul.slides li img {
+    padding-right: 10px;
 }

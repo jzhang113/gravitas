@@ -30,7 +30,7 @@
  *   Base
  * ========================================================================== */
 
-/* 
+/*
  * To preserve theme settings never apply font properties to the HTML element.
  * This is critically important if you are using the Responsive JavaScript
  * feature as this relies on being able to set a pseudo font family on the HTML
@@ -51,6 +51,14 @@ body {
 /* =============================================================================
  *   HTML Elements
  * ========================================================================== */
+
+// Link color for headings
+h2, h3, h4, h5, h6 {
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+}
 
 h1 {}
 
@@ -151,6 +159,7 @@ var {
  * Main wrapper in page.tpl.php, the .container class sets the width of the page, do not add width to it!
  */
 #page  {
+  * {@include box-sizing(border-box);}
   .container {}
 }
 
@@ -164,7 +173,9 @@ var {
 /*
  * Wraps the sidebars the content column
  */
-#columns {}
+#columns {
+  margin-bottom: 25px;
+}
 
 
 /*
@@ -225,8 +236,6 @@ var {
  * Wraps the header
  */
 #header-wrapper {
-  /* Debug styles, is this working */
-  background: $debug;
   .container {}
 }
 
@@ -283,13 +292,69 @@ var {
  * Footer wrapper
  */
 #footer-wrapper {
-  /* Debug styles, is this working? */
-  background: $debug;
+  background-color: #000000;
+  border-top: 1px solid #4A4E50;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding-top: 20px;
+  text-align: center;
 
   .container {}
 }
 
-
+#footer-panels-wrapper {
+  background-color: #3B3B3C;
+  margin-bottom: 0;
+  color: #fff;
+  padding: 25px 0 10px;
+  div.block-content.content {
+    margin-left: 120px;
+    a {
+      color: #fff;
+      &:hover {
+        text-decoration: underline;
+      }
+      img {
+        margin-left: 10px;
+        margin-top: 5px;
+      }
+    }
+    p {
+      padding-left: .5em;
+    }
+    ul li {
+      background-color: #464E55;
+      text-align: center;
+      margin: 5px;
+      height: 40px;
+      width: 40px;
+      display: inline;
+      float: left;
+      font-weight: bold;
+      position: relative;
+      &.active {
+        background-color: #FFC344;
+        a {
+          color: #000;
+        }
+      }
+      a {
+        display: block;
+        padding-top: 12px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  h2.block-title {
+      color: #fff;
+      float: left;
+      font-weight: bold;
+      font-size: 1.6em;
+      text-transform: uppercase;
+  }
+}
 /* =============================================================================
  *   Branding
  * ========================================================================== */
@@ -297,14 +362,18 @@ var {
 /*
  * Wraps all the branding elements, logo, name and slogan
  */
-#branding {}
+#branding {
+  float: left;
+  padding: 0;
+}
 
 
 /*
  * Logo
  */
 #logo {
-  padding: 10px 0;
+  float: left;
+  padding: 10px 15px 10px 0;
 
   img {
     vertical-align: bottom;
@@ -325,7 +394,10 @@ var {
   margin: 0;
 
   a {
-
+    font-family: steelfish;
+    color: #414042;
+    font-weight: 400;
+    letter-spacing: 0;
     &:link,
     &:visited {
       text-decoration: none;
@@ -450,7 +522,9 @@ ul.links {
 /*
  * Header region, embedded in the #header
  */
-.region-header {}
+.region-header {
+  float: right;
+}
 
 
 /*
@@ -486,11 +560,17 @@ ul.links {
 /*
  * First sidebar
  */
-.region-sidebar-first {}
+.region-sidebar-first {
+  border-top: 6px solid #FFC344;
+  border-right: 1px solid #FFC344;
+  border-left: 1px solid #FFC344;
+  border-bottom: 1px solid #FFC344;
+  background-color: #FFF6DC;
+}
 
 
 /*
- * Second sidebar
+ * Second sidebard
  */
 .region-sidebar-second {}
 
@@ -512,6 +592,7 @@ ul.links {
  * ========================================================================== */
 
 a {
+  color: #086782;
   text-decoration: none;
 
   &:link,
@@ -522,7 +603,7 @@ a {
 
   &:hover,
   &:focus {
-    text-decoration: underline;
+    color: #8B9084;
   }
 }
 
@@ -563,9 +644,9 @@ a {
     display: block;
     white-space: nowrap;
     padding: 0 10px;
-    
+
     &:visited {}
-    
+
     &:hover,
     &:focus {}
   }
@@ -684,24 +765,56 @@ ul.sf-menu {
  * ========================================================================== */
 
 ul.menu {
-  padding-left: 15px;
+  list-style-position: inside;
+
+  .region-header & {
+    text-transform: uppercase;
+  }
 
   ul {
-    padding-left: 15px;
+    margin-left: 15px;
+    padding-left: 25px;
 
     ul {
-      ul {}
+      margin-left: 15px;
+
+      ul {
+        margin-left: 15px;
+      }
     }
   }
 
   li {
-    margin: 0;
+    margin: 2px 0;
+    .region-header & {
+      float: left;
+      margin: 0 2px !important;
+    }
 
     &.collapsed,
     &.expanded,
-    &.leaf {}
+    &.leaf {
+      .region-header & {
+        list-style-image: none;
+        list-style-position: outside;
+        padding-right: 10px;
+      }
+    }
 
     a {
+      .region-header & {
+        border-bottom: 3px double #E1E1E1;
+        display: block;
+        height: 2em;
+        line-height: 2em;
+        padding: 0 8px;
+        color: #000;
+        font-size: .9em;
+        &:hover,
+        &:focus {
+          color: #8B9084;
+        }
+      }
 
       &:link,
       &:visited {}
@@ -713,21 +826,19 @@ ul.menu {
       &:focus {}
     }
 
-    &.active a,
-    &.active-trail a {}
+    &.active a, &.active-trail a {}
 
-    &.first,
-    &.last {}
+    &.first, &.last {}
   }
 }
 
 
 /* If li.content exists it's a problem, so reset the padding */
 .block .menu li.content {
-  padding: 0;   
+  padding: 0;
 }
 
- 
+
 /* =============================================================================
  *   Book navigation menu
  * ========================================================================== */
@@ -745,7 +856,7 @@ ul.menu {
     min-width: 2em;
     white-space: nowrap;
   }
-  
+
   .menu {
     margin-left: 0;
   }
@@ -756,8 +867,25 @@ ul.menu {
  *   Breadcrumbs
  * ========================================================================== */
 
+// The wrapper around the breadcrumbs
+#breadcrumb-wrapper {
+  margin-bottom: 2.5em;
+}
+
+#breadcrumb-wrapper .container {
+  background: #FFC822; /* Old browsers */
+  @include background(linear-gradient(top, #FFF6D9, #FFC61A));
+  border: 1px solid #FFC61A;
+  height: 3em;
+}
+
 #breadcrumb {
-  margin: 10px 0;
+  padding-top: .5em;
+  padding-bottom: .5em;
+
+  #breadcrumb {
+    margin-left: 0px;
+  }
 
   /* If the label is set to show in theme settings the label class is added */
   .breadcrumb-label {
@@ -789,6 +917,10 @@ ul.menu {
   li.crumb-last {}
 
   a {
+
+    color: #000000;
+    font-weight: bold;
+    font-size: .8em;
 
     &:link,
     &:visited {}
@@ -1152,7 +1284,7 @@ ul.action-links {
 
 
 /*
- * Image Alignment Theme Settings - included here so you can easily override 
+ * Image Alignment Theme Settings - included here so you can easily override
  */
 
 /*
@@ -1199,6 +1331,9 @@ ul.action-links {
  */
 .block {
   margin-bottom: 20px;
+  .region-header & {
+    margin-top: 20px;
+  }
 }
 
 
@@ -1260,6 +1395,14 @@ ul.action-links {
     margin: 0;
     padding: 0;
   }
+
+  ul.menu {
+    padding: 0;
+    margin: 4px 0;
+  ul {
+    margin-left: 15px;
+  }
+}
 }
 
 
@@ -1368,7 +1511,36 @@ ul.action-links {
 /*
  * "Main menu" block
  */
-#block-system-main-menu {}
+#block-system-main-menu {
+  a {
+  color: #000 !important;
+  }
+  li {
+    border-bottom: 1px solid #FFC344;
+    padding: 10px;
+    position: relative;
+    &:after {
+      content: ' ';
+      background: #FFC344;
+      height: 6px;
+      width: 6px;
+      position: absolute;
+      bottom: -3px;
+      right: 0;
+    }
+    li {
+      border-bottom: none;
+      padding: 2px;
+      &:after {
+        display: none;
+      }
+    }
+  }
+  .block-inner {
+    margin-left: 0;
+    margin-right: 20px;
+  }
+}
 
 
 /*
@@ -1496,6 +1668,17 @@ ul.action-links {
 
 .node-poll {}
 
+// Custom style for Iowa Now Articles
+
+.node-iowa-now-article .publication_source {
+  color: #3B3B3C;
+  font-style: italic;
+}
+
+.field-name-field-iowanow-thumbnail-image {
+  float: left;
+  margin: 0.5em 0.5em 0.5em 0;
+}
 
 /* =============================================================================
  *   Comment Styling - Comments, comment wrapper, comment form
@@ -1605,7 +1788,7 @@ ul.action-links {
 /*
  * Wrapper for a form element (or group of form elements) and its label
  */
-.form-item { 
+.form-item {
 
   input.error,
   textarea.error,
@@ -1617,7 +1800,7 @@ ul.action-links {
     font-weight: 700;
   }
 
-  label.option { 
+  label.option {
   }
 
   .description {
@@ -1642,7 +1825,7 @@ ul.action-links {
 /*
  * The submit button
  */
-.form-submit { 
+.form-submit {
 }
 
 
@@ -1663,14 +1846,14 @@ fieldset {
 /*
  * Tips for Drupal's input formats
  */
-.tips { 
+.tips {
 }
 
 
 /*
  * Buttons used by contrib modules like Media
  */
-a.button { 
+a.button {
   @include appearance(button);
 }
 
@@ -1926,4 +2109,183 @@ tr.error {
     min-height: 260px;
     width: auto;
   }
+}
+
+/* =========================
+ * Custom styles
+ * ====================== */
+// Distinct styling for lists of content, homepages, etc.
+
+.distinct-header h2 {
+    &.pane-title, &.block-title {
+      border-bottom: 1px solid #FFC344;
+      position: relative;
+      margin-bottom: 15px;
+      font-weight: 400;
+      & a {
+        text-decoration: none;
+      }
+      &:after {
+        background: none repeat scroll 0 0 #FFC344;
+        bottom: -3px;
+        content: " ";
+        height: 6px;
+        position: absolute;
+        right: 0;
+        width: 6px;
+      }
+  }
+}
+
+.minimal {
+  h3 {
+    font-size: 1.2em;
+    font-weight: 100;
+    a {
+      color: #086782;
+      text-decoration: none;
+      &:hover, &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.sub {
+  color: #3B3B3C;
+  font-style: italic;
+}
+
+// Flexslider
+.flexslider {
+  margin-bottom: 0;
+  background: #EBEBEB; /* Old browsers */
+  @include background(linear-gradient(top, #EBEBEB, #D1D1D1));
+  h2 {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 100;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+      a {
+        color: #086782;
+        text-decoration: none;
+        &:hover {
+          color: #3B3B3C;
+        }
+      }
+  }
+  .views-field-body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+div.flex-pauseplay {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  .flex-play {
+    cursor: pointer;
+  }
+}
+
+// Calendar Styles
+.views-calendar, .view-events-calendar {
+
+// COLOR VARIABLES
+  $hover: #1F69A9;
+  $today: #FFF3CD;
+  $todayBorder: $hover;
+  $containerColor: #F7F7F7;
+  $borderColor: #CCCCCC;
+
+// OVERRIDES AND CLEARS
+  //*  { @include box-sizing(border-box); } // This ensures that "views-calendar" is using the box-border model
+
+  .date-nav-wrapper { margin-top: 0; }
+
+  .date-nav-wrapper .date-nav { margin-bottom: 0; padding:0; margin-bottom: 3px; }
+
+  .pager .date-prev,
+  .pager .date-next { background: transparent; border: none; top: 5px; }
+
+  .pager .date-prev { right: auto; left: 0; }
+
+  .item-list ul.pager .date-prev a,
+  .item-list ul.pager .date-next a { background-color: transparent; border: none; outline: none; }
+
+  .calendar-calendar div.day { width: auto; }
+
+  .calendar-calendar tr td.today,
+  .calendar-calendar tr.odd td.today,
+  .calendar-calendar tr.even td.today { background-color: $today; }
+
+  .calendar-calendar .month-view .full tr td.single-day.today,
+  .calendar-calendar .month-view .full td.date-box.today { border-color: $todayBorder; }
+
+// CONTAINER STYLES
+  padding: 4px;
+  background: $containerColor;
+  border: 1px solid $borderColor;
+
+  tbody { border: 1px solid $borderColor; }
+
+  tr.odd,
+  tr.info,
+  tr:nth-child(2n+1) {
+    background-color: lighten(#000, 94%);
+  }
+
+  .calendar-calendar table.mini td.empty { border-color: $borderColor; }
+
+  .calendar-calendar th.days { border: none; }
+
+  .calendar-calendar td {
+    border: 1px solid $borderColor;
+    padding: 7px 3px 3px;
+    text-align: center;
+  }
+
+  .date-heading {
+    @include highlightBtn;
+    padding: 2px;
+    margin-top: 0 !important;
+    margin-bottom: 4px;
+  }
+
+  .item-list ul.pager {
+    margin: 0;
+    padding: 0;
+
+    .date-prev a,
+    .date-next a {
+      @include imgReplace;
+      background-image: url('images/slider-controls.png');
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 20px;
+      display: block;
+      font-size: 0;
+
+      &:hover, &:focus, &:active {
+        background-color: lighten($hover, 30%);
+        @include border-radius(3px);
+        @include box-shadow(rgba(0,0,0,.2), 0px, 0px, 5px, inset);
+      }
+    }
+
+    .date-prev a { background-position: 0 0; }
+    .date-next a { background-position: 0 -20px; }
+  }
+}
+
+//Views read-more class
+.view p.top-read-more {
+    margin: 0;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    display: block;
+    width: 4em;
 }
