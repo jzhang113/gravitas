@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "steelfish";
+  src: url('fonts/steelfish/steelfish-webfont.eot');
+  src: url('fonts/steelfish/steelfish-webfont.eot?#iefix') format('eot'), url('fonts/steelfish/steelfish-webfont.woff') format('woff'), url('fonts/steelfish/steelfish-webfont.ttf') format('truetype'), url('fonts/steelfish/steelfish-webfont.svg') format('svg');
+}
+
 /*
  * @file
  * global.styles

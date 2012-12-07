@@ -60,6 +60,13 @@ $lucida:                      'Lucida Sans Unicode', 'Lucida Sans', 'Lucida Gran
 $impact:                      Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal, 'Helvetica Inserat', 'Bitstream Vera Sans Bold', 'Arial Black', sans-serif;
 $mono:                        Consolas, Monaco, 'Courier New', Courier, monospace, sans-serif;
 
+// Define our font
+@include font-face('steelfish',
+  font-files(
+    'steelfish/steelfish-webfont.woff', woff,
+    'steelfish/steelfish-webfont.ttf', ttf,
+    'steelfish/steelfish-webfont.svg', svg),
+    'steelfish/steelfish-webfont.eot');
 
 //
 // Gutters
