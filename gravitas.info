@@ -7,8 +7,8 @@
   base theme  = adaptivetheme
   release     = 7.x-3.x
   engine      = phptemplate
-  screenshot  = screenshot.png
   version = "7.x-3.0-dev1"
+  screenshot  = screenshot_gravitas.png
   core = "7.x"
   project = "gravitas"
 
