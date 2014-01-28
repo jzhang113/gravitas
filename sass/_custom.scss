@@ -223,3 +223,11 @@ $gutter-width: 10px;
   font-size: 1em;
   line-height: 0;
 }
+
+//
+// REM font sizing
+//
+@mixin font-size($sizeValue: 1.4){
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
